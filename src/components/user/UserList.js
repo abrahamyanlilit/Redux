@@ -13,8 +13,6 @@ const UserList = ({ users }) => (
 
 const mapStateToProps = state =>{
     const users = getUserList(state);
-    Object.keys(users).forEach(function(key, index) {
-         console.log(users[key].first_name + " --- 000")});
     return {users}
 }
 export default connect(mapStateToProps)(UserList);

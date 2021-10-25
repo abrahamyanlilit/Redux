@@ -25,9 +25,6 @@ const users = (state = initialState, action) => {
         //         delete byIds[id];
         //     }
         // }
-        // case EDIT_USER: {
-        //     const
-        //         }
 
         default:
             return state;
