@@ -1,8 +1,48 @@
 import {CREATE_USER, DELETE_USER, EDIT_USER} from "../actionTypes";
 
 const initialState = {
-    allIds: [],
-    byIds: {}
+    byIds: {
+        1: {
+            "first_name": "Anna",
+            "last_name": "Hovakimyan",
+            "age": 33,
+            "email": "aaaa@gmail.com",
+            "phone": "077079798",
+            "gender": "female"
+        },
+        2: {
+            "first_name": "Alla",
+            "last_name": "Sargsyan",
+            "age": 23,
+            "email": "bbbb@gmail.com",
+            "phone": "077079798",
+            "gender": "female"
+        },
+        3: {
+            "first_name": "Aram",
+            "last_name": "Sargsyan",
+            "age": 60,
+            "email": "cccc@gmail.com",
+            "phone": "077079798",
+            "gender": "male"
+        },
+        4: {
+            "first_name": "Suren",
+            "last_name": "Harutyunyan",
+            "age": 55,
+            "email": "dddd@gmail.com",
+            "phone": "077079798",
+            "gender": "male"
+        },
+        5: {
+            "first_name": "Samvel",
+            "last_name": "Gevorgyan",
+            "age": 22,
+            "email": "eeee@gmail.com",
+            "phone": "077079798",
+            "gender": "male"
+        },
+    }
 };
 
 const users = (state = initialState, action) => {
@@ -11,20 +51,12 @@ const users = (state = initialState, action) => {
             const {id, content} = action.payload;
             return {
                 ...state,
-                allIds: [...state.allIds, id],
                 byIds: {
                     ...state.byIds,
                     [id]: content
                 }
             };
         }
-        // case DELETE_USER: {
-        //     const {id} = action.payload;
-        //     return{
-        //         ...state,
-        //         delete byIds[id];
-        //     }
-        // }
 
         default:
             return state;

@@ -1,3 +1,6 @@
-import {HANDLE_BUTTON} from "../actionTypes";
+import {SELECT_PAGE} from "../actionTypes";
 
-export const buttonHandler = button => ({type: HANDLE_BUTTON, payload: {button}});
+export const selectPage = pageName => ({
+    type: SELECT_PAGE,
+    payload: {pageName}
+});
