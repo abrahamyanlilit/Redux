@@ -1,4 +1,5 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 
 const User = ({user}) => (
@@ -9,8 +10,8 @@ const User = ({user}) => (
             <span> Age: {user.age} </span>
             <span> Email: {user.email} </span>
             <span> Phone: {user.phone} </span>
-            <Button>Edit</Button>
-            <Button>Delete</Button>
+            <Button className="m-2">Edit</Button>
+            <Button className="m-2">Delete</Button>
         </div>
     </li>
 );

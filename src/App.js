@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from "react-bootstrap";
 import {BsFillPersonLinesFill} from 'react-icons/bs';
 import CreateUser from "./components/user/CreateUser";
@@ -24,7 +25,7 @@ class App extends React.Component {
         return (
             <>
                 <div>
-                    <Button className="m-3" onClick = {() => this.props.selectPage(BUTTON_HANDLER.USERS)}>Users</Button>
+                    <Button className="m-4" onClick = {() => this.props.selectPage(BUTTON_HANDLER.USERS)}>Users</Button>
 
                     <Button className="m-3" onClick = {() => this.props.selectPage(BUTTON_HANDLER.CREATE_USER)} ><BsFillPersonLinesFill/></Button>
                 </div>
