@@ -12,13 +12,15 @@ export const createUser = (content) => ({
     }
 });
 
-
-export const deleteUser = (id) =>({
+export const deleteUser = (id) => ({
     type: DELETE_USER,
-    payload:{id}
+    payload: {id}
 })
 
-export const editUser = (id) =>({
+export const editUser = (id, content) => ({
     type: EDIT_USER,
-    payload: {id}
+    payload: {
+        id: id,
+        content: content
+    }
 })

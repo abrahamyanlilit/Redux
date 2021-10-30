@@ -47,6 +47,7 @@ const initialState = {
 
 const users = (state = initialState, action) => {
     switch (action.type) {
+        case EDIT_USER:
         case CREATE_USER: {
             const {id, content} = action.payload;
             return {
@@ -56,6 +57,17 @@ const users = (state = initialState, action) => {
                     [id]: content
                 }
             };
+        }
+        case DELETE_USER: {
+            const {id} = action.payload;
+            console.log("id---" + JSON.stringify(id));
+            console.log("state - " + JSON.stringify(state));
+            console.log(JSON.stringify(state.byIds[1]));
+            delete state.byIds[id];
+            console.log("state - " + JSON.stringify(state));
+            return {
+                ...state
+            }
         }
 
         default:

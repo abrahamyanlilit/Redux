@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {getSelectedPage} from "./redux/selectors";
 import {BUTTON_HANDLER} from "./constants";
 import {selectPage} from "./redux/actions/appActions";
+import EditUser from "./components/user/EditUser";
 
 
 class App extends React.Component {
@@ -21,17 +22,18 @@ class App extends React.Component {
             showPage = <div><UserList/></div>;
         else if (this.props.selectedPage === BUTTON_HANDLER.CREATE_USER)
             showPage = <div><CreateUser/></div>;
+        else if (this.props.selectedPage === BUTTON_HANDLER.EDIT_USER)
+            showPage = <div><EditUser/></div>
 
         return (
             <>
                 <div>
-                    <Button className="m-4" onClick = {() => this.props.selectPage(BUTTON_HANDLER.USERS)}>Users</Button>
-
-                    <Button className="m-3" onClick = {() => this.props.selectPage(BUTTON_HANDLER.CREATE_USER)} ><BsFillPersonLinesFill/></Button>
+                    <Button className="m-3" onClick={() => this.props.selectPage(BUTTON_HANDLER.USERS)}>Users</Button>
+                    <Button className="m-3"
+                            onClick={() => this.props.selectPage(BUTTON_HANDLER.CREATE_USER)}><BsFillPersonLinesFill/></Button>
                 </div>
                 {showPage}
             </>
-
         );
     }
 }
@@ -42,6 +44,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {selectPage})(App);
-
-
-// export default App;

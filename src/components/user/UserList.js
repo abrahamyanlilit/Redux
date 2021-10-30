@@ -6,7 +6,7 @@ import {getUserList} from "../../redux/selectors";
 const UserList = ({ users }) => (
     <ol>
         {Object.keys(users).map(function(key, index) {
-            return <User key={key} user={users[key]}/>
+            return <User id={key} user={users[key]}/>
         })}
     </ol>
 );
