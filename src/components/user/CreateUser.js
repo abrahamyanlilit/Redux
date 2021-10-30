@@ -5,7 +5,7 @@ import {createUser} from "../../redux/actions/userActions";
 class CreateUser extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {first_name: "", last_name: "", age: "", email: "", phone:""};
+        this.state = {first_name: "", last_name: "", age: "", email: "", phone: ""};
     }
 
     updateFirstName = firstName => {
@@ -38,8 +38,10 @@ class CreateUser extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" placeholder="First name" onChange={e => this.updateFirstName(e.target.value)}/><br/><br/>
-                <input type="text" placeholder="Last name" onChange={e => this.updateLastName(e.target.value)}/><br/><br/>
+                <input type="text" placeholder="First name"
+                       onChange={e => this.updateFirstName(e.target.value)}/><br/><br/>
+                <input type="text" placeholder="Last name"
+                       onChange={e => this.updateLastName(e.target.value)}/><br/><br/>
                 <input type="text" placeholder="Age" onChange={e => this.updateAge(e.target.value)}/><br/><br/>
                 <input type="email" placeholder="Email" onChange={e => this.updateEmail(e.target.value)}/><br/><br/>
                 <input type="phone" placeholder="Phone" onChange={e => this.updatePhone(e.target.value)}/><br/><br/>

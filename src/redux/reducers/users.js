@@ -60,10 +60,14 @@ const users = (state = initialState, action) => {
         }
         case DELETE_USER: {
             const {id} = action.payload;
-            delete state.byIds[id];
-            return {
-                ...state
+            // delete state.byIds[id];
+            let new_state = {byIds: {}}
+            for (let key in state.byIds) {
+                if (key !== id) {
+                    new_state.byIds[key] = state.byIds[key];
+                }
             }
+            return new_state;
         }
 
         default:

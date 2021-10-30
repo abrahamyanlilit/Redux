@@ -3,9 +3,9 @@ import {connect} from "react-redux";
 import User from "./User"
 import {getUserList} from "../../redux/selectors";
 
-const UserList = ({ users }) => (
+const UserList = ({users}) => (
     <ol>
-        {Object.keys(users).map(function(key, index) {
+        {Object.keys(users).map(function (key, index) {
             return <User id={key} user={users[key]}/>
         })}
     </ol>
