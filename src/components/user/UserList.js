@@ -11,7 +11,7 @@ const UserList = ({ users }) => (
     </ol>
 );
 
-const mapStateToProps = state =>{
+const mapStateToProps = state => {
     const users = getUserList(state);
     return {users}
 }

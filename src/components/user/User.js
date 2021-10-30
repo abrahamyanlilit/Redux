@@ -14,7 +14,7 @@ const User = ({user, id, deleteUser, selectPage}) => (
             <span> Age: {user.age} </span>
             <span> Email: {user.email} </span>
             <span> Phone: {user.phone} </span>
-            <Button className="m-2" onClick={() => selectPage(BUTTON_HANDLER.EDIT_USER)}>Edit</Button>
+            <Button className="m-2" onClick={() => selectPage(BUTTON_HANDLER.EDIT_USER, id)}>Edit</Button>
             <Button className="m-2" onClick={() => deleteUser(id)}>Delete</Button>
         </div>
     </li>

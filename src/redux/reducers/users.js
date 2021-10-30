@@ -60,11 +60,7 @@ const users = (state = initialState, action) => {
         }
         case DELETE_USER: {
             const {id} = action.payload;
-            console.log("id---" + JSON.stringify(id));
-            console.log("state - " + JSON.stringify(state));
-            console.log(JSON.stringify(state.byIds[1]));
             delete state.byIds[id];
-            console.log("state - " + JSON.stringify(state));
             return {
                 ...state
             }

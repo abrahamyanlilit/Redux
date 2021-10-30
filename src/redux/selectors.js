@@ -6,3 +6,4 @@ export const getUserList = store =>
 export const getUserById = (store, id) => getUsersState(store).byIds[id];
 
 export const getSelectedPage = store => store.buttonHandler;
+

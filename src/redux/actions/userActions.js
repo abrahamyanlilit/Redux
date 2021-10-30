@@ -2,7 +2,7 @@ import {CREATE_USER} from "../actionTypes";
 import {DELETE_USER} from "../actionTypes";
 import {EDIT_USER} from "../actionTypes";
 
-let nextUserId = 6;
+let nextUserId = 5;
 
 export const createUser = (content) => ({
     type: CREATE_USER,

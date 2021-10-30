@@ -5,7 +5,7 @@ import {BsFillPersonLinesFill} from 'react-icons/bs';
 import CreateUser from "./components/user/CreateUser";
 import UserList from "./components/user/UserList";
 import {connect} from "react-redux";
-import {getSelectedPage} from "./redux/selectors";
+import {getSelectedPage, getUserById} from "./redux/selectors";
 import {BUTTON_HANDLER} from "./constants";
 import {selectPage} from "./redux/actions/appActions";
 import EditUser from "./components/user/EditUser";
@@ -23,7 +23,7 @@ class App extends React.Component {
         else if (this.props.selectedPage === BUTTON_HANDLER.CREATE_USER)
             showPage = <div><CreateUser/></div>;
         else if (this.props.selectedPage === BUTTON_HANDLER.EDIT_USER)
-            showPage = <div><EditUser/></div>
+            showPage = <div><EditUser user={this.props.user} id={this.props.editedUserId}/></div>
 
         return (
             <>
@@ -39,8 +39,11 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const selectedPage = getSelectedPage(state);
-    return {selectedPage};
+    const selectedPage = getSelectedPage(state).pageName;
+    const editedUserId = getSelectedPage(state).editUserId;
+    const user = getUserById(state, editedUserId);
+
+    return {selectedPage, editedUserId, user};
 }
 
 export default connect(mapStateToProps, {selectPage})(App);
