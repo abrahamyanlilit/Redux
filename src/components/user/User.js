@@ -6,18 +6,17 @@ import {connect} from "react-redux";
 import {BUTTON_HANDLER} from "../../constants";
 import {selectPage} from "../../redux/actions/appActions";
 
-const User = ({user, id, deleteUser, selectPage}) => (
-    <li>
-        <div>
-            <span> First name: {user.first_name} </span>
-            <span> Last name: {user.last_name} </span>
-            <span> Age: {user.age} </span>
-            <span> Email: {user.email} </span>
-            <span> Phone: {user.phone} </span>
-            <Button className="m-2" onClick={() => selectPage(BUTTON_HANDLER.EDIT_USER, id)}>Edit</Button>
-            <Button className="m-2" onClick={() => deleteUser(id)}>Delete</Button>
-        </div>
-    </li>
+const User = ({user, deleteUser, selectPage}) => (
+    <div>
+        <span>Id: {user.id}</span>
+        <span> First name: {user.first_name} </span>
+        <span> Last name: {user.last_name} </span>
+        <span> Age: {user.age} </span>
+        <span> Email: {user.email} </span>
+        <span> Phone: {user.phone} </span>
+        <Button className="m-2" onClick={() => selectPage(BUTTON_HANDLER.EDIT_USER, user.id)}>Edit</Button>
+        <Button className="m-2" onClick={() => deleteUser(user.id)}>Delete</Button>
+    </div>
 
 );
 

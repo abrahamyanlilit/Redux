@@ -1,8 +1,10 @@
 import {CREATE_USER, DELETE_USER, EDIT_USER} from "../actionTypes";
+import {forEach} from "react-bootstrap/ElementChildren";
 
 const initialState = {
-    byIds: {
-        1: {
+    users: [
+        {
+            "id": 1,
             "first_name": "Anna",
             "last_name": "Hovakimyan",
             "age": 33,
@@ -10,7 +12,8 @@ const initialState = {
             "phone": "077079798",
             "gender": "female"
         },
-        2: {
+        {
+            "id": 2,
             "first_name": "Alla",
             "last_name": "Sargsyan",
             "age": 23,
@@ -18,7 +21,8 @@ const initialState = {
             "phone": "077079798",
             "gender": "female"
         },
-        3: {
+        {
+            "id": 3,
             "first_name": "Aram",
             "last_name": "Sargsyan",
             "age": 60,
@@ -26,7 +30,8 @@ const initialState = {
             "phone": "077079798",
             "gender": "male"
         },
-        4: {
+        {
+            "id": 4,
             "first_name": "Suren",
             "last_name": "Harutyunyan",
             "age": 55,
@@ -34,7 +39,8 @@ const initialState = {
             "phone": "077079798",
             "gender": "male"
         },
-        5: {
+        {
+            "id": 5,
             "first_name": "Samvel",
             "last_name": "Gevorgyan",
             "age": 22,
@@ -42,34 +48,41 @@ const initialState = {
             "phone": "077079798",
             "gender": "male"
         },
-    }
+    ]
 };
 
 const users = (state = initialState, action) => {
     switch (action.type) {
-        case EDIT_USER:
         case CREATE_USER: {
             const {id, content} = action.payload;
+            content.id = id;
+            state.users.push(content);
             return {
-                ...state,
-                byIds: {
-                    ...state.byIds,
-                    [id]: content
-                }
-            };
+                users: state.users
+            }
         }
-        case DELETE_USER: {
-            const {id} = action.payload;
-            // delete state.byIds[id];
-            let new_state = {byIds: {}}
-            for (let key in state.byIds) {
-                if (key !== id) {
-                    new_state.byIds[key] = state.byIds[key];
+        case EDIT_USER: {
+            const {content} = action.payload;
+            for (let i = 0; i < state.users.length; i++) {
+                if (content.id === state.users[i].id) {
+                    state.users[i] = content;
+                    break;
                 }
             }
-            return new_state;
+            return {
+                users: state.users
+            }
         }
 
+        case DELETE_USER: {
+            const {id} = action.payload;
+            let new_state = {users: []};
+            state.users.forEach(function (obj) {
+                if (obj.id !== id)
+                    new_state.users.push(obj);
+            })
+            return new_state;
+        }
         default:
             return state;
     }

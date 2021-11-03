@@ -1,14 +1,13 @@
 import React from "react";
 import {connect} from "react-redux";
 import {editUser} from "../../redux/actions/userActions";
-import {getUserById} from "../../redux/selectors";
 
 class EditUser extends React.Component {
     constructor(props) {
         super(props);
-        this.id = this.props.id;
         this.user = this.props.user;
         this.state = {
+            id: this.user.id,
             first_name: this.user.first_name,
             last_name: this.props.user.last_name,
             age: this.props.user.age,
@@ -34,8 +33,10 @@ class EditUser extends React.Component {
         this.setState({phone: phone});
     };
 
-    handleClickEditUser = (id) => {
-        this.props.editUser(id, {
+    handleClickEditUser = () => {
+        console.log("OK");
+        this.props.editUser({
+            id: this.state.id,
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             age: this.state.age,
@@ -57,7 +58,7 @@ class EditUser extends React.Component {
                        onChange={e => this.updateEmail(e.target.value)}/><br/><br/>
                 <input type="phone" placeholder="Phone" value={this.state.phone}
                        onChange={e => this.updatePhone(e.target.value)}/><br/><br/>
-                <button onClick={() => this.handleClickEditUser(this.id)}>Save</button>
+                <button onClick={() => this.handleClickEditUser()}>Save</button>
             </div>
         )
     }

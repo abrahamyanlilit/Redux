@@ -17,10 +17,9 @@ export const deleteUser = (id) => ({
     payload: {id}
 })
 
-export const editUser = (id, content) => ({
+export const editUser = (content) => ({
     type: EDIT_USER,
     payload: {
-        id: id,
         content: content
     }
 })
